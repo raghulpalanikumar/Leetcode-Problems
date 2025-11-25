@@ -1,18 +1,27 @@
-import java.util.HashSet;
-
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
 public class Solution {
     public ListNode detectCycle(ListNode head) {
-        HashSet<ListNode> visited = new HashSet<>();
-
-        ListNode current = head;
-        while (current != null) {
-            // If we have seen this node before, it's the start of the cycle
-            if (visited.contains(current)) {
-                return current;
+        Set<ListNode> n = new HashSet<>();
+        ListNode temp=head;
+        while(temp!=null)
+        {
+            if(n.contains(temp))
+            {
+                return temp;
             }
-            visited.add(current);
-            current = current.next;
+            n.add(temp);
+            temp=temp.next;
         }
-        return null; // No cycle found
+        return null;
     }
 }
