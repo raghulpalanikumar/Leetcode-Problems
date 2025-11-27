@@ -10,19 +10,13 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-     Stack<Integer> stack = new Stack();
-     ListNode temp = head;
-     while(temp!=null)
-     {
-        stack.push(temp.val);
-        temp=temp.next;
-     }
-     temp=head;
-     while(temp!=null)
-     {
-        temp.val=stack.pop();
-        temp=temp.next;
-     }
-     return head;
+        ListNode prev = null;
+        while (head != null) {
+            ListNode next = head.next; // store next node
+            head.next = prev;          // reverse the link
+            prev = head;               // move prev forward
+            head = next;               // move head forward
+        }
+        return prev;
     }
 }
