@@ -1,27 +1,17 @@
 class Solution {
    public static int removeDuplicates(int[] nums) {
-        // Use TreeMap to keep elements sorted
-        Map<Integer, Integer> m = new HashMap<>();
+        Map<Integer, Integer> map = new TreeMap<>(); // TreeMap keeps numbers sorted
         int index = 0;
 
-        // Step 1: Count frequency of each number
-        for (int num : nums) {
-            m.put(num, m.getOrDefault(num, 0) + 1);
+        for (int num : nums)
+            map.put(num, map.getOrDefault(num, 0) + 1);
+
+        for (int num : map.keySet()) {
+            int freq = Math.min(map.get(num), 2); // keep max 2 copies
+            for (int i = 0; i < freq; i++)
+                nums[index++] = num;
         }
-
-        // Step 2: Place elements back into nums
-        for (int num : m.keySet()) {
-            int freq = m.get(num);
-
-            // LeetCode 80 rule: keep at most 2 occurrences
-            freq = Math.min(freq, 2);
-
-            for (int i = 0; i < freq; i++) {
-                nums[index++] = num; // store number (not frequency)
-            }
-        }
-
-        // Step 3: Return the new length
         return index;
-}
+    }
+
 }
