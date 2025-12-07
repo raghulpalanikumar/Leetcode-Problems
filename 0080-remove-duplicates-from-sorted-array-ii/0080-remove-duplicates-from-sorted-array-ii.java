@@ -1,6 +1,6 @@
 class Solution {
    public static int removeDuplicates(int[] nums) {
-        Map<Integer, Integer> map = new TreeMap<>(); // TreeMap keeps numbers sorted
+        Map<Integer, Integer> map = new HashMap<>(); // TreeMap keeps numbers sorted
         int index = 0;
 
         for (int num : nums)
