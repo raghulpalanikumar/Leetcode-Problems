@@ -1,0 +1,59 @@
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+
+        int noe = 12;
+        int nov = 12;
+
+        int[][] edges = {
+            {0,1},{0,2},{0,3},{1,4},{2,5},
+            {3,7},{4,6},{6,9},{7,8},{8,9},
+            {8,10},{10,11}
+        };
+
+        // Create adjacency list
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+
+        for (int i = 0; i < nov; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        // Build graph (undirected)
+        for (int i = 0; i < noe; i++) {
+            int v1 = edges[i][0];
+            int v2 = edges[i][1];
+            graph.get(v1).add(v2);
+            graph.get(v2).add(v1);
+        }
+
+        // ---------- DFS using STACK ----------
+        Stack<Integer> stack = new Stack<>();
+        boolean[] visited = new boolean[nov];
+        ArrayList<Integer> res = new ArrayList<>();
+
+        int start = 4;
+        stack.push(start);
+
+        while (!stack.isEmpty()) {
+            int node = stack.pop();
+
+            if (!visited[node]) {
+                visited[node] = true;
+                res.add(node);
+
+                // Push neighbors
+                for (int neighbor : graph.get(node)) {
+                    if (!visited[neighbor]) {
+                        stack.push(neighbor);
+                    }
+                }
+            }
+        }
+
+        // Print DFS traversal
+        for (int x : res) {
+            System.out.print(x + " ");
+        }
+    }
+}
