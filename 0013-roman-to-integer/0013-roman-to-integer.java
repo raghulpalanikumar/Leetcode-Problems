@@ -1,31 +1,51 @@
 class Solution {
     public int romanToInt(String s) {
-    int prev=0;
-    int n=0;
-    int ans=0;
-    for(int i=s.length()-1;i>=0;i--)
-    {
-    char c=s.charAt(i);
-    switch(c){
-        case 'I': n =1; break;
-        case 'V': n=5;  break;
-        case 'X': n=10; break;
-        case 'L': n=50; break;
-        case 'C': n=100; break;
-        case 'D': n=500; break;
-        case 'M': n=1000; break;
-    }
-        if(n<prev)
+        int add=0;
+        int prev=0;
+        for(int i=s.length()-1;i>=0;i--)
         {
-            ans=ans-n;
+            int curr=0;
+            char c = s.charAt(i);
+            switch(c)
+            {
+                case 'I':
+                curr=1;
+                break;
+
+                case 'V':
+                curr=5;
+                break;
+
+                case 'X':
+                curr=10;
+                break;
+
+                case 'L':
+                curr=50;
+                break;
+
+                case 'C':
+                curr=100;
+                break;
+
+                case 'D':
+                curr=500;
+                break;
+
+                case 'M':
+                curr=1000;
+                break;
+            }
+            if(curr>prev)
+            {
+                add+=curr;
+            }
+            else
+            {
+                add-=curr;
+            }
+            prev=curr;
         }
-        else
-        {
-            ans=ans+n;
-        }
-        prev=n;
+        return add;
     }
-    
-    return ans;
-    }
-    }
+}
