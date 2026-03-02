@@ -21,6 +21,7 @@ class Solution {
             left++;
         }
         }
+        
         int arr[] = new int[a.size()];
         for(int i=0;i<arr.length;i++)
         {
