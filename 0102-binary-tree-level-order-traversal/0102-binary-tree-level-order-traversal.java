@@ -20,26 +20,27 @@ class Solution {
     {
         return l;
     }
-    Queue<TreeNode> a = new LinkedList<>();
-    a.add(root);
-    while(!a.isEmpty())
+    Queue<TreeNode> q = new LinkedList<>();
+    q.add(root);
+    while(!q.isEmpty())
     {
-        int siz=a.size();
-        List<Integer> ls = new ArrayList<>();
-        for(int i=0;i<siz;i++)
-        {
-        TreeNode t = a.poll();
-        ls.add(t.val);
-        if(t.left!=null)
-        {
-            a.add(t.left);
-        }
-        if(t.right!=null)
-        {
-            a.add(t.right);
-        }
-        }
-        l.add(ls);
+    List<Integer> w = new ArrayList<>();
+     int size = q.size();
+     for(int i=0;i<size;i++)
+     {
+    TreeNode curr = q.poll();
+     w.add(curr.val);
+    
+     if(curr.left!=null)
+     {
+     q.add(curr.left);
+     }
+     if(curr.right!=null)
+     {
+        q.add(curr.right);
+     }
+    }
+    l.add(w);
     }
     return l;
     }
