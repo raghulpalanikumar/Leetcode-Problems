@@ -13,18 +13,30 @@
  *     }
  * }
  */
- class Solution {
+class Solution {
     public boolean isSymmetric(TreeNode root) {
-        if (root == null) return true;
-        return isMirror(root.left, root.right);
+    if(root==null)
+    {
+        return true;
     }
+    return isSymmetric(root.left,root.right);
+    }
+    boolean isSymmetric(TreeNode left,TreeNode right)
+    {
+        if(left==null && right==null)
+        {
+            return true;
+        }
+        if(left==null || right==null)
+        {
+            return false;
+        }
 
-    private boolean isMirror(TreeNode t1, TreeNode t2) {
-        // both null → symmetric
-        if (t1 == null && t2 == null) return true;
-        // one null, one not → not symmetric
-        if (t1 == null || t2 == null) return false;
-        // values must match, and their children must mirror
-        return (t1.val == t2.val)  && isMirror(t1.left, t2.right) && isMirror(t1.right, t2.left);
+        if(left.val!=right.val)
+        {
+            return false;
+        }
+     
+        return isSymmetric(left.left,right.right) && isSymmetric(left.right,right.left);
     }
 }
