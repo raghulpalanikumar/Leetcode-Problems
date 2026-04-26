@@ -36,7 +36,7 @@ class Solution {
                 curr=1000;
                 break;
             }
-            if(curr>prev)
+            if(curr>=prev)
             {
                 add+=curr;
             }
