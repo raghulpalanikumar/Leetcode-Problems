@@ -1,22 +1,21 @@
 class Solution {
     public int fib(int n) {
-        int fib1=0;
-        int fib2=1;
-        int fib3=0;
-        if(n==0)
-        {
-            return 0;
-        }
-        if(n==1)
-        {
-        return 1; 
-        }
-        for(int i=2;i<=n;i++)
-        {
-            fib3=fib1+fib2;
-            fib1=fib2;
-            fib2=fib3;
-        }
-        return fib3;
+    int f0=0;
+    int f1=1;
+    int f2=0;
+    if(n==1)
+    {
+        return 1;
     }
+    else
+    {
+    for(int i=1;i<n;i++)
+    {
+    f2=f1+f0;
+    f0=f1;
+    f1=f2;
+    }
+    }
+     return f2;
+}
 }
