@@ -1,7 +1,14 @@
 class Solution {
     public int climbStairs(int n) {
-        if(n == 2 || n == 1) return n;  // base case
-        int s = climbStairs(n-1) + climbStairs(n-2);
-        return s;
+    int prev0 =0;
+    int prev1 =1;
+    int sum=0;
+    for(int i=1;i<=n;i++)
+    {
+    sum = prev0+prev1;
+    prev0=prev1;
+    prev1=sum;
+    }
+    return sum;
     }
 }
